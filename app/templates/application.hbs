@@ -34,6 +34,14 @@
       <strong>Rubies:</strong>
       {{session.player.rubies}}
     </p>
+
+    <p>
+      <strong>Level:</strong>
+      {{session.player.level}}
+      <div class="progress-bar">
+        <span class="meter" {{bind-attr style="levelProgress"}}></span>
+      </div>
+    </p>
   </aside>
 
   <section>

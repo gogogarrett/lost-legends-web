@@ -10,3 +10,11 @@ html, body {
 @import "header";
 @import "main";
 @import "zones";
+@import "progress";
+
+
+#grid {
+  div {
+    @include span-columns(3 of 12);
+  }
+}
