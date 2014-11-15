@@ -1,0 +1,11 @@
+<h1>Root level - Zones</h1>
+
+<div id="zones">
+  {{#each zone in controller}}
+    <div>
+      {{#link-to 'zone' zone}}
+        <p> {{zone.title}} </p>
+      {{/link-to}}
+    </div>
+  {{/each}}
+</div>
