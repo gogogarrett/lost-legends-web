@@ -1,0 +1,16 @@
+<h2>Inventory</h2>
+
+<ul>
+  {{#each item in session.player.items}}
+    <li>
+      <p>
+        <strong>Title:</strong>
+        {{item.title}}
+      </p>
+      <p>
+        <strong>Type:</strong>
+        {{item.type}}
+      </p>
+    </li>
+  {{/each}}
+</ul>

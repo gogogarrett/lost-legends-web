@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    <li> {{#link-to 'profile.inventory'}} Inventory {{/link-to }} </li>
+    <li> {{#link-to 'profile.equipment'}} Equipment {{/link-to }} </li>
+  </ul>
+</nav>
+
+<h1>Profile: {{session.player.title}}</h1>
+{{outlet}}

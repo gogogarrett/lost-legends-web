@@ -10,6 +10,10 @@ Router.map(function() {
   this.resource('zone', { path: "/:zone_id" }, function() {
     this.route('battle');
   });
+  this.resource('profile', { path: "/profile" }, function() {
+    this.route('inventory');
+    this.route('equipment');
+  });
 });
 
 export default Router;
