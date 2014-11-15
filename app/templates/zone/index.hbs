@@ -1,0 +1,18 @@
+{{#if parent}}
+  {{#link-to "zone" parent}} Back {{/link-to}}
+{{else}}
+  {{#link-to "zones"}} Back {{/link-to}}
+{{/if}}
+
+<h1>Zone: {{title}}</h1>
+<small>{{desc}}</small>
+
+<div id="zones">
+  {{#each zone in zones}}
+    <div {{bind-attr class="zone.isBattle"}}>
+      {{#link-to 'zone' zone}}
+        <p> {{zone.title}} </p>
+      {{/link-to}}
+    </div>
+  {{/each}}
+</div>
