@@ -7,7 +7,9 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('zones', { path: "/" });
-  this.resource('zone', { path: "/:zone_id" });
+  this.resource('zone', { path: "/:zone_id" }, function() {
+    this.route('battle');
+  });
 });
 
 export default Router;

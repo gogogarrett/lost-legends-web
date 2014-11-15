@@ -7,4 +7,7 @@ export default DS.Model.extend({
   title: DS.attr('string'),
   desc: DS.attr('string'),
   root: DS.attr('boolean'),
+  battle: DS.attr('boolean'),
+
+  isBattle: Em.computed.bool('battle')
 });

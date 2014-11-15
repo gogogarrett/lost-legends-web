@@ -1,0 +1,20 @@
+{{#link-to "zone" zone}} Back {{/link-to}}
+
+<h1>Battle for {{zone.title}}</h1>
+<small>{{zone.desc}}</small>
+<p>Level: {{level}}</p>
+
+{{#if win}}
+  <p>Congrats - you <strong>won!</strong></p>
+  <p>You got <em>{{exp}}</em> experience.</p>
+
+  <p>You found <em>{{rubies}}</em> rubies. Woot!</p>
+
+  {{#each item in items}}
+    <p>You found an item! <em>{{item.title}}</em>. Boo-ya.</p>
+  {{else}}
+    No items were found.. sucker.
+  {{/each}}
+{{else}}
+  <p>Sad day.. you <strong>LOST</strong>!</p>
+{{/if}}
