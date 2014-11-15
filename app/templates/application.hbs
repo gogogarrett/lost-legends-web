@@ -1,3 +1,14 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<header class="navigation">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo"></a>
+    <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <div class="nav">
+      <ul id="navigation-menu">
+        <li class="nav-link">{{link-to 'Home' 'application'}}</li>
+        <li class="nav-link">{{link-to 'Profile' 'profile.index'}}</li>
+      </ul>
+    </div>
+  </div>
+</header>
 
 {{outlet}}
