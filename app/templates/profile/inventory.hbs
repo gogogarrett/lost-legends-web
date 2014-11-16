@@ -11,6 +11,10 @@
         <strong>Type:</strong>
         {{item.type}}
       </p>
+
+      <button {{action "equip" item}}>
+        Equip
+      </button>
     </li>
   {{/each}}
 </ul>
