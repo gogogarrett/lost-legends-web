@@ -2,6 +2,7 @@ import DS from "ember-data";
 
 export default DS.Model.extend({
   items: DS.hasMany('item', { async: true }),
+  equipped_items: DS.hasMany('slots', { async: true }),
 
   title: DS.attr('string'),
   exp: DS.attr('number'),

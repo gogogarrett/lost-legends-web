@@ -1,1 +1,18 @@
 <h2>Equipment</h2>
+
+<ul>
+  {{#each slot in session.player.equipped_items}}
+    <li>
+      {{#with slot.item}}
+        <p>
+          <strong>Title:</strong>
+          {{title}}
+        </p>
+        <p>
+          <strong>Type:</strong>
+          {{type}}
+        </p>
+      {{/with}}
+    </li>
+  {{/each}}
+</ul>
