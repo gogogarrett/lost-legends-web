@@ -8,6 +8,11 @@ export default DS.Model.extend({
   exp: DS.attr('number'),
   hunts: DS.attr('number'),
   rubies: DS.attr('number'),
+  spending_points: DS.attr('number'),
+
+  muscle: DS.attr('number'),
+  intellect: DS.attr('number'),
+  defense: DS.attr('number'),
 
   level: function() {
     var exp = this.get('exp');

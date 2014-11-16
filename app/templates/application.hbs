@@ -36,12 +36,57 @@
     </p>
 
     <p>
-      <strong>Level:</strong>
+      <strong>Level Proess:</strong>
       {{session.player.level}}
-      <div class="progress-bar">
+      <div class="progress-bar" style="margin: 0px;">
         <span class="meter" {{bind-attr style="levelProgress"}}></span>
       </div>
     </p>
+
+    <hr />
+
+    <p class="muscle">
+      <strong>Muscle:</strong>
+      {{#if isEditingPoints}}
+        {{musclePoints}}
+        <div {{action 'add' 'muscle'}}> + </div>
+        <div {{action 'minus' 'muscle'}}> - </div>
+      {{else}}
+        {{session.player.muscle}}
+      {{/if}}
+    </p>
+
+    <p class="intellect">
+      <strong>Intellect:</strong>
+      {{#if isEditingPoints}}
+        {{intellectPoints}}
+        <div {{action 'add' 'intellect'}}> + </div>
+        <div {{action 'minus' 'intellect'}}> - </div>
+      {{else}}
+        {{session.player.intellect}}
+      {{/if}}
+    </p>
+
+    <p class="defense">
+      <strong>Defense:</strong>
+      {{#if isEditingPoints}}
+        {{defensePoints}}
+        <div {{action 'add' 'defense'}}> + </div>
+        <div {{action 'minus' 'defense'}}> - </div>
+      {{else}}
+        {{session.player.defense}}
+      {{/if}}
+    </p>
+
+    {{#if isEditingPoints}}
+      <p>
+        You have <strong>{{pointsToSpendComputed}}</strong> spending points!
+      </p>
+
+      <button {{action "savePoints"}}>
+        Save
+      </button>
+    {{/if}}
   </aside>
 
   <section>
