@@ -1,7 +1,7 @@
 <h2>Equipment</h2>
 
 <ul>
-  {{#each slot in session.player.equipped_items}}
+  {{#each slot in session.player.slots}}
     <li>
       {{#with slot.item}}
         <p>
