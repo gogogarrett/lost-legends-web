@@ -33,12 +33,26 @@ export default Ember.Route.extend({
       player.set('rubies', newRubies);
     }
 
-    model.get('items').then(function(item) {
-      player.get('items').pushObjects(item);
-    });
+    // create inventory objects for the join between player / item
+    var store = this.store;
+    model.get('items').then(function(items) {
+      items.forEach(function(item) {
+        var itemType = item.get('type');
+
+        var idCreateHash = {
+          player_id: player.get('id'),
+          item_id: item.get('id'),
+          item_type: itemType,
+        };
+
+        // Normal #save doesn't send IDS..lame
+        Em.$.post('/api/v1/inventories', { inventory: idCreateHash }).then(function(inventory) {
+          console.log(inventory);
+        })
+      })
+    })
 
     player.save();
-
     return model.get('zone');
   },
 
