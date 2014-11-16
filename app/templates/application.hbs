@@ -49,8 +49,8 @@
       <strong>Muscle:</strong>
       {{#if isEditingPoints}}
         {{musclePoints}}
-        <div {{action 'add' 'muscle'}}> + </div>
-        <div {{action 'minus' 'muscle'}}> - </div>
+        <i {{action 'add' 'muscle'}}> + </i>
+        <i {{action 'minus' 'muscle'}}> - </i>
       {{else}}
         {{session.player.muscle}}
       {{/if}}
@@ -60,8 +60,8 @@
       <strong>Intellect:</strong>
       {{#if isEditingPoints}}
         {{intellectPoints}}
-        <div {{action 'add' 'intellect'}}> + </div>
-        <div {{action 'minus' 'intellect'}}> - </div>
+        <i {{action 'add' 'intellect'}}> + </i>
+        <i {{action 'minus' 'intellect'}}> - </i>
       {{else}}
         {{session.player.intellect}}
       {{/if}}
@@ -71,8 +71,8 @@
       <strong>Defense:</strong>
       {{#if isEditingPoints}}
         {{defensePoints}}
-        <div {{action 'add' 'defense'}}> + </div>
-        <div {{action 'minus' 'defense'}}> - </div>
+        <i {{action 'add' 'defense'}}> + </i>
+        <i {{action 'minus' 'defense'}}> - </i>
       {{else}}
         {{session.player.defense}}
       {{/if}}
