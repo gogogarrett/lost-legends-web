@@ -1,8 +1,8 @@
 import DS from "ember-data";
 
 export default DS.Model.extend({
-  items: DS.hasMany('item', { async: true }),
-  slots: DS.hasMany('slots', { async: true }),
+  slots: DS.hasMany('slot', { async: true }),
+  inventories: DS.hasMany('inventory', { async: true }),
 
   title: DS.attr('string'),
   exp: DS.attr('number'),
