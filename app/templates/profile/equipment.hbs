@@ -12,6 +12,10 @@
           <strong>Type:</strong>
           {{type}}
         </p>
+
+        <button {{action "unequip" slot slot.item}}>
+          Unequip
+        </button>
       {{/with}}
     </li>
   {{/each}}
