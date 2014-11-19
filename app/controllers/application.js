@@ -2,8 +2,8 @@ import Ember from "ember";
 
 export default Ember.Controller.extend({
   levelProgress: function() {
-    return "width:" + this.get('session.player.levelProgress') + "%"
-  }.property('session.player.levelProgress'),
+    return "width:" + this.get('session.player.level_progress') + "%"
+  }.property('session.player.level_progress'),
 
   isEditingPoints: function() {
     return this.get('session.player.spending_points') > 0
