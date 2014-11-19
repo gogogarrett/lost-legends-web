@@ -2,79 +2,55 @@ import Ember from "ember";
 
 export default Ember.Controller.extend({
   levelProgress: function() {
-    return "width:" + this.get('session.player.level_progress') + "%"
+    return "width:" + this.get('session.player.level_progress') + "%";
   }.property('session.player.level_progress'),
 
   isEditingPoints: function() {
-    return this.get('session.player.spending_points') > 0
+    return this.get('session.player.spending_points') > 0;
   }.property('session.player.spending_points'),
 
+  buildSumArray: function(count) {
+    var array = [];
+    for (var x = 0; x < count; x++) { array.push(1); }
+    return array;
+  },
+
   pointsToSpend: function() {
-    var pointsArray = [];
-    var pointsToSpenddd = this.get('session.player.spending_points');
-    for (var x = 0; x < pointsToSpenddd; x++) {
-      pointsArray.push(1);
-    }
-    return pointsArray;
+    return this.buildSumArray(this.get('session.player.spending_points'));
   }.property('session.player.spending_points'),
 
   muscleArray: function() {
-    var muscleArray = [];
-    var musclePoints = this.get('session.player.muscle');
-    for (var x = 0; x < musclePoints; x++) {
-      muscleArray.push(1);
-    }
-    return muscleArray;
+    return this.buildSumArray(this.get('session.player.muscle'));
   }.property('session.player.muscle'),
 
   intellectArray: function() {
-    var intellectArray = [];
-    var intellectPoints = this.get('session.player.intellect');
-    for (var x = 0; x < intellectPoints; x++) {
-      intellectArray.push(1);
-    }
-    return intellectArray;
+    return this.buildSumArray(this.get('session.player.intellect'));
   }.property('session.player.intellect'),
 
   defenseArray: function() {
-    var defenseArray = [];
-    var defensePoints = this.get('session.player.defense');
-    for (var x = 0; x < defensePoints; x++) {
-      defenseArray.push(1);
-    }
-    return defenseArray;
+    return this.buildSumArray(this.get('session.player.defense'));
   }.property('session.player.defense'),
 
-  musclePoints: function() {
+  arrayTotal: function (array) {
     var total = 0;
-    Em.$.each(this.get('muscleArray'), function() {
-      total += this;
-    })
+    Ember.$.each(array, function() { total += this; });
     return total;
+  },
+
+  musclePoints: function() {
+    return this.arrayTotal(this.get('muscleArray'));
   }.property('muscleArray.@each'),
 
   intellectPoints: function() {
-    var total = 0;
-    Em.$.each(this.get('intellectArray'), function() {
-      total += this;
-    })
-    return total;
+    return this.arrayTotal(this.get('intellectArray'));
   }.property('intellectArray.@each'),
 
   defensePoints: function() {
-    var total = 0;
-    Em.$.each(this.get('defenseArray'), function() {
-      total += this;
-    })
-    return total;
+    return this.arrayTotal(this.get('defenseArray'));
   }.property('defenseArray.@each'),
 
   pointsToSpendComputed: function() {
-    var total = 0;
-    Em.$.each(this.get('pointsToSpend'), function() {
-      total += this;
-    })
-    return total;
+    return this.arrayTotal(this.get('pointsToSpend'));
   }.property('pointsToSpend.@each'),
 
   actions: {
@@ -90,7 +66,7 @@ export default Ember.Controller.extend({
     minus: function(type) {
       var name = type + "Array";
       var array = this.get(name);
-      var playerKey = "session.player." + type
+      var playerKey = "session.player." + type;
       var playerValue = this.get(playerKey);
 
       if ( this.get('pointsToSpend').length >= 0 && array.length > 0 && array.length > playerValue) {
