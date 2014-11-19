@@ -1,0 +1,76 @@
+<aside class="col-md-3">
+  <h1>Player Stats</h1>
+
+  <p class="title">
+    <strong>Title:</strong>
+    {{session.player.title}}
+  </p>
+
+  <p class="exp">
+    <strong>Exp:</strong>
+    {{session.player.exp}}
+  </p>
+
+  <p class="hunts">
+    <strong>Hunts:</strong>
+    {{session.player.hunts}}
+  </p>
+
+  <p class="rubies">
+    <strong>Rubies:</strong>
+    {{session.player.rubies}}
+  </p>
+
+  <p>
+    <strong>Level:</strong>
+    {{session.player.level}}
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" {{bind-attr style="levelProgress"}}>
+        {{session.player.level_progress}}%
+      </div>
+    </div>
+  </p>
+
+  <hr />
+
+  <p class="muscle">
+    <strong>Muscle:</strong>
+    {{#if isEditingPoints}}
+      {{musclePoints}}
+      <i {{action 'add' 'muscle'}}> + </i>
+      <i {{action 'minus' 'muscle'}}> - </i>
+    {{else}}
+      {{session.player.muscle}}
+    {{/if}}
+  </p>
+
+  <p class="intellect">
+    <strong>Intellect:</strong>
+    {{#if isEditingPoints}}
+      {{intellectPoints}}
+      <i {{action 'add' 'intellect'}}> + </i>
+      <i {{action 'minus' 'intellect'}}> - </i>
+    {{else}}
+      {{session.player.intellect}}
+    {{/if}}
+  </p>
+
+  <p class="defense">
+    <strong>Defense:</strong>
+    {{#if isEditingPoints}}
+      {{defensePoints}}
+      <i {{action 'add' 'defense'}}> + </i>
+      <i {{action 'minus' 'defense'}}> - </i>
+    {{else}}
+      {{session.player.defense}}
+    {{/if}}
+  </p>
+
+  {{#if isEditingPoints}}
+    <p>
+      You have <strong>{{pointsToSpendComputed}}</strong> spending points!
+    </p>
+    <button {{action "savePoints"}}> Save </button>
+  {{/if}}
+</aside>

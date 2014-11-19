@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{link-to 'LostLegends' 'application' classNames="navbar-brand"}}
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"> {{link-to 'Home' 'application'}} </li>
+        <li> {{link-to 'Profile' 'profile.index'}} </li>
+        <li> {{link-to 'Inventory' 'profile.inventory'}} </li>
+        <li> {{link-to 'Equipment' 'profile.equipment'}} </li>
+      </ul>
+    </div>
+  </div>
+</nav>
