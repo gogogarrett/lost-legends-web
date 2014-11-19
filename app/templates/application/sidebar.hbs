@@ -1,4 +1,4 @@
-<aside class="col-md-3">
+<aside class="col-md-2">
   <h1>Player Stats</h1>
 
   <p class="title">
@@ -34,43 +34,69 @@
 
   <hr />
 
-  <p class="muscle">
-    <strong>Muscle:</strong>
-    {{#if isEditingPoints}}
-      {{musclePoints}}
-      <i {{action 'add' 'muscle'}}> + </i>
-      <i {{action 'minus' 'muscle'}}> - </i>
-    {{else}}
-      {{session.player.muscle}}
-    {{/if}}
-  </p>
+  <div class="stats">
+    <div class="muscle row">
+      <strong class="col-md-8">Muscle:</strong>
 
-  <p class="intellect">
-    <strong>Intellect:</strong>
-    {{#if isEditingPoints}}
-      {{intellectPoints}}
-      <i {{action 'add' 'intellect'}}> + </i>
-      <i {{action 'minus' 'intellect'}}> - </i>
-    {{else}}
-      {{session.player.intellect}}
-    {{/if}}
-  </p>
+      <div class="muscle-stat col-md-4 text-right">
+        {{#if isEditingPoints}}
+          {{musclePoints}}
+          <button class="btn btn-default btn-xs" {{action "add" "muscle"}}>
+            +
+          </button>
+          <button class="btn btn-default btn-xs" {{action "minus" "muscle"}}>
+            -
+          </button>
+        {{else}}
+          {{session.player.muscle}}
+        {{/if}}
+      </div>
+    </div>
 
-  <p class="defense">
-    <strong>Defense:</strong>
-    {{#if isEditingPoints}}
-      {{defensePoints}}
-      <i {{action 'add' 'defense'}}> + </i>
-      <i {{action 'minus' 'defense'}}> - </i>
-    {{else}}
-      {{session.player.defense}}
-    {{/if}}
-  </p>
+    <div class="intellect row">
+      <strong class="col-md-8">Intellect:</strong>
+      <div class="intellect-stat col-md-4 text-right">
+        {{#if isEditingPoints}}
+          {{intellectPoints}}
+          <button class="btn btn-default btn-xs" {{action "add" "intellect"}}>
+            +
+          </button>
+          <button class="btn btn-default btn-xs" {{action "minus" "intellect"}}>
+            -
+          </button>
+        {{else}}
+          {{session.player.intellect}}
+        {{/if}}
+      </div>
+    </div>
 
-  {{#if isEditingPoints}}
-    <p>
-      You have <strong>{{pointsToSpendComputed}}</strong> spending points!
-    </p>
-    <button {{action "savePoints"}}> Save </button>
-  {{/if}}
+    <div class="defense row">
+      <strong class="col-md-8">Defense:</strong>
+
+      <div class="defense-stat col-md-4 text-right">
+        {{#if isEditingPoints}}
+          {{defensePoints}}
+          <button class="btn btn-default btn-xs" {{action "add" "defense"}}>
+            +
+          </button>
+          <button class="btn btn-default btn-xs" {{action "minus" "defense"}}>
+            -
+          </button>
+        {{else}}
+          {{session.player.defense}}
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="spending-points">
+      {{#if isEditingPoints}}
+        <p>
+          You have <strong>{{pointsToSpendComputed}}</strong> spending points!
+        </p>
+        <button class="btn btn-primary" {{action "savePoints"}}>
+          Save
+        </button>
+      {{/if}}
+    </div>
+  </div>
 </aside>
