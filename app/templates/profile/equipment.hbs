@@ -1,22 +1,21 @@
 <h2>Equipment</h2>
 
-<ul>
+<div class="row">
   {{#each slot in session.player.slots}}
-    <li>
-      {{#with slot.item}}
-        <p>
-          <strong>Title:</strong>
-          {{title}}
-        </p>
-        <p>
-          <strong>Type:</strong>
-          {{type}}
-        </p>
-
-        <button {{action "unequip" slot slot.item}}>
-          Unequip
-        </button>
-      {{/with}}
-    </li>
+    <div class="col-sm-6 col-md-4">
+      <div {{bind-attr class="zone.isBattle :thumbnail"}}>
+        <div class="caption">
+          {{#with slot.item}}
+            <h3>{{title}}</h3>
+            <p>{{type}}</p>
+            <p>
+              <button class="btn btn-primary" {{action "unequip" slot slot.item}}>
+                Unequip
+              </button>
+            </p>
+          {{/with}}
+        </div>
+      </div>
+    </div>
   {{/each}}
-</ul>
+</div>

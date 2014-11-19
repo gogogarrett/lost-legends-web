@@ -1,18 +1,44 @@
-{{#if parent}}
-  {{#link-to "zone" parent}} Back {{/link-to}}
-{{else}}
-  {{#link-to "zones"}} Back {{/link-to}}
-{{/if}}
+<ol class="breadcrumb">
+  <li>{{#link-to "zones"}} All zones {{/link-to}}
+    <span class="divider"> / </span>
+  </li>
 
-<h1>Zone: {{title}}</h1>
-<small>{{desc}}</small>
+  {{#if parent.parent.parent}}
+    <li> {{#link-to "zone" parent.parent.parent}} {{parent.parent.parent.title}} {{/link-to}}
+      <span class="divider"> / </span>
+    </li>
+  {{/if}}
 
-<div id="zones">
+  {{#if parent.parent}}
+    <li> {{#link-to "zone" parent.parent}} {{parent.parent.title}} {{/link-to}}
+      <span class="divider"> / </span>
+    </li>
+  {{/if}}
+
+  {{#if parent}}
+    <li> {{#link-to "zone" parent}} {{parent.title}} {{/link-to}}
+      <span class="divider"> / </span>
+    </li>
+  {{/if}}
+
+  <li class="active">{{title}}</li>
+</ol>
+
+
+<div class="row">
   {{#each zone in zones}}
-    <div {{bind-attr class="zone.isBattle"}}>
-      {{#link-to 'zone' zone}}
-        <p> {{zone.title}} </p>
-      {{/link-to}}
+    <div class="col-sm-6 col-md-4">
+      <div {{bind-attr class="zone.isBattle :thumbnail"}}>
+        <div class="caption">
+          <h3>{{zone.title}}</h3>
+          <p>{{zone.desc}}</p>
+          <p>
+            {{#link-to 'zone' zone classNames="btn btn-primary"}}
+              Check it out
+            {{/link-to}}
+          </p>
+        </div>
+      </div>
     </div>
   {{/each}}
 </div>

@@ -1,24 +1,21 @@
 <h2>Inventory</h2>
 
-<ul>
+<div class="row">
   {{#each inventory in session.player.inventories}}
-    <li>
-      {{#with inventory.item}}
-        <p>
-          <strong>Title:</strong>
-          {{title}}
-        </p>
-        <p>
-          <strong>Type:</strong>
-          {{type}}
-        </p>
-
-        <button {{action "equip" inventory inventory.item}}>
-          Equip
-        </button>
-      {{/with}}
-    </li>
+    <div class="col-sm-6 col-md-4">
+      <div {{bind-attr class="zone.isBattle :thumbnail"}}>
+        <div class="caption">
+          {{#with inventory.item}}
+            <h3>{{title}}</h3>
+            <p>{{type}}</p>
+            <p>
+              <button class="btn btn-primary" {{action "equip" inventory inventory.item}}>
+                Equip
+              </button>
+            </p>
+          {{/with}}
+        </div>
+      </div>
+    </div>
   {{/each}}
-</ul>
-
-
+</div>

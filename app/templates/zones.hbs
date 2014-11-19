@@ -1,11 +1,21 @@
-<h1>Root level - Zones</h1>
+<ol class="breadcrumb">
+  <li class='active'>All zones</li>
+</ol>
 
-<div id="zones">
+<div class="row">
   {{#each zone in rootZones}}
-    <div>
-      {{#link-to 'zone' zone}}
-        <p> {{zone.title}} </p>
-      {{/link-to}}
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{zone.title}}</h3>
+          <p>{{zone.desc}}</p>
+          <p>
+            {{#link-to 'zone' zone classNames="btn btn-primary"}}
+              Check it out
+            {{/link-to}}
+          </p>
+        </div>
+      </div>
     </div>
   {{/each}}
 </div>
