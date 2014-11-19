@@ -1,20 +1,53 @@
 {{#link-to "zone" zone}} Back {{/link-to}}
 
-<h1>Battle for {{zone.title}}</h1>
-<small>{{zone.desc}}</small>
-<p>Level: {{level}}</p>
+<h1> {{zone.title}} </h1>
+<p> {{zone.desc}} </p>
 
-{{#if win}}
-  <p>Congrats - you <strong>won!</strong></p>
-  <p>You got <em>{{exp}}</em> experience.</p>
+<hr />
 
-  <p>You found <em>{{rubies}}</em> rubies. Woot!</p>
+<h2>You run into a wild <em>{{monster.title}}</em></h2>
+<p> {{monster.desc}} </p>
 
-  {{#each item in items}}
-    <p>You found an item! <em>{{item.title}}</em>. Boo-ya.</p>
+<hr />
+
+
+{{#if complete}}
+  {{#if won}}
+    <p>Congrats - you <strong>won!</strong></p>
+    <p>You got <em>{{exp}}</em> experience.</p>
+
+    <p>You found <em>{{rubies}}</em> rubies. Woot!</p>
+
+    {{#each item in items}}
+      <p>You found an item! <strong><em>{{item.title}}</em></strong>. Boo-ya.</p>
+    {{else}}
+      No items were found.. sucker.
+    {{/each}}
   {{else}}
-    No items were found.. sucker.
-  {{/each}}
+    <p>Sad day.. you <strong>LOST</strong>!</p>
+  {{/if}}
+
+  <hr />
+
+  {{#link-to "zone.battle" zoneId classNames="btn btn-default disabled"}}
+    <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+    Hunt again!
+  {{/link-to}}
+
+  {{#link-to "zone" zone classNames="btn btn-default"}}
+    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+    Back to zone
+  {{/link-to}}
+
 {{else}}
-  <p>Sad day.. you <strong>LOST</strong>!</p>
+  <button type="button" class="btn btn-default" {{action "attack"}}>
+    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+    Attack
+  </button>
+
+  {{#link-to "zone" zone classNames="btn btn-default"}}
+    <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+    Run away!
+  {{/link-to}}
 {{/if}}
+
