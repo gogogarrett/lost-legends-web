@@ -1,20 +1,8 @@
-@import "bourbon";
-@import "neat/neat";
-@import "base/base";
-
 html, body {
   margin: 0;
   padding: 0;
 }
 
-@import "header";
-@import "main";
-@import "zones";
-@import "progress";
-
-
-#grid {
-  div {
-    @include span-columns(3 of 12);
-  }
+.is-battle  {
+  border-color: #d9534f;
 }
