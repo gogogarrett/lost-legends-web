@@ -5,6 +5,10 @@ export default Ember.Controller.extend({
     return "width:" + this.get('session.player.level_progress') + "%";
   }.property('session.player.level_progress'),
 
+  healthProgress: function() {
+    return "width:" + this.get('session.player.health_progress') + "%";
+  }.property('session.player.health_progress'),
+
   isEditingPoints: function() {
     return this.get('session.player.spending_points') > 0;
   }.property('session.player.spending_points'),

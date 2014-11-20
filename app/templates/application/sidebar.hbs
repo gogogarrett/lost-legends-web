@@ -22,11 +22,20 @@
   </p>
 
   <p>
+    <strong>Health:</strong>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" {{bind-attr style="healthProgress"}}>
+        {{session.player.health_progress}}%
+      </div>
+    </div>
+  </p>
+
+  <p>
     <strong>Level:</strong>
     {{session.player.level}}
 
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" {{bind-attr style="levelProgress"}}>
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" {{bind-attr style="levelProgress"}}>
         {{session.player.level_progress}}%
       </div>
     </div>
