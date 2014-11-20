@@ -7,8 +7,6 @@ export default Ember.ArrayController.extend({
       var store = this.store;
       var self = this;
 
-      inventory.destroyRecord();
-
       store.find('item', item.get('id')).then(function(item) {
         player.get('slots').then(function(slots){
           var itemType = item.get('type');
@@ -34,7 +32,8 @@ export default Ember.ArrayController.extend({
             // Normal #save doesn't send IDS..lame
             Em.$.post('/api/v1/slots', { slot: idCreateHash }).then(function(slot) {
               console.log(slot);
-            })
+            });
+            inventory.destroyRecord();
           }
         })
 

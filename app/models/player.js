@@ -9,6 +9,10 @@ export default DS.Model.extend({
   rubies: DS.attr('number'),
   spending_points: DS.attr('number'),
 
+  max_health: DS.attr('number'),
+  current_health: DS.attr('number'),
+  health_progress: DS.attr('number'),
+
   exp: DS.attr('number'),
   level_progress: DS.attr('number'),
   level: DS.attr('number'),

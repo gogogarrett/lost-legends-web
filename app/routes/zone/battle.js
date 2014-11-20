@@ -48,54 +48,72 @@ export default Ember.Route.extend({
       var player = this.get('session.player');
       var store = this.store;
 
+      var attackParams = {
+        player_battle: {
+          id: context.get('id'),
+          player_id: player.get('id'),
+        }
+      };
+
+      Ember.$.ajax({
+        url: "/api/v1/player_battles/" + context.get('id') + "/attack",
+        type: "POST",
+        // url: "/api/v1/player_battles/" + context.get('id'),
+        // type: 'PATCH',
+        data: attackParams,
+      }).then(function(data) {
+        console.log(data);
+      });
+
+
       // [g] gross
       // if (Math.floor(Math.random() * 100) > 50) {
-        context.set('status', 'won');
+        // context.set('status', 'won');
       // } else {
         // context.set('status', 'fail');
       // }
 
-      context.save().then(function(model) {
+      // context.save().then(function(model) {
 
-        if ( model.get('complete') ) {
+      //   if ( model.get('complete') ) {
 
-          if ( model.get('won') ) {
+      //     if ( model.get('won') ) {
 
-            // update players exp
-            if ( !isNaN(model.get('exp')) ) {
-              var newExp = player.get('exp') + model.get('exp');
-              player.set('exp', newExp);
-            }
+      //       // update players exp
+      //       if ( !isNaN(model.get('exp')) ) {
+      //         var newExp = player.get('exp') + model.get('exp');
+      //         player.set('exp', newExp);
+      //       }
 
-            // update players rubies
-            if ( !isNaN(model.get('rubies')) ) {
-              var newRubies = player.get('rubies') + model.get('rubies');
-              player.set('rubies', newRubies);
-            }
+      //       // update players rubies
+      //       if ( !isNaN(model.get('rubies')) ) {
+      //         var newRubies = player.get('rubies') + model.get('rubies');
+      //         player.set('rubies', newRubies);
+      //       }
 
-            model.get('items').then(function(items) {
-              items.forEach(function(item) {
-                var itemType = item.get('type');
+      //       model.get('items').then(function(items) {
+      //         items.forEach(function(item) {
+      //           var itemType = item.get('type');
 
-                var idCreateHash = {
-                  player_id: player.get('id'),
-                  item_id: item.get('id'),
-                  item_type: itemType,
-                };
+      //           var idCreateHash = {
+      //             player_id: player.get('id'),
+      //             item_id: item.get('id'),
+      //             item_type: itemType,
+      //           };
 
-                // Normal #save doesn't send IDS..lame
-                Em.$.post('/api/v1/inventories', { inventory: idCreateHash }).then(function(inventory) {
-                  console.log(inventory);
-                })
-              })
-            })
+      //           // Normal #save doesn't send IDS..lame
+      //           Em.$.post('/api/v1/inventories', { inventory: idCreateHash }).then(function(inventory) {
+      //             console.log(inventory);
+      //           })
+      //         })
+      //       })
 
-            player.save().then(function(player) {
-              console.log(player);
-            });
-          }
-        }
-      });
+      //       player.save().then(function(player) {
+      //         console.log(player);
+      //       });
+      //     }
+      //   }
+      // });
     }
   }
 });
