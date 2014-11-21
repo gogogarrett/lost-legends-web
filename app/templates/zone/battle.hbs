@@ -14,9 +14,9 @@
 {{#if complete}}
   {{#if won}}
     <p>Congrats - you <strong>won!</strong></p>
-    <p>You got <em>{{exp}}</em> experience.</p>
+    <p>You got <span class="alert-success">{{exp}}</span> experience.</p>
 
-    <p>You found <em>{{rubies}}</em> rubies. Woot!</p>
+    <p>You found <span class="alert-info">{{rubies}}</span> rubies. Woot!</p>
 
     {{#each item in items}}
       <p>You found an item! <strong><em>{{item.title}}</em></strong>. Boo-ya.</p>
@@ -40,6 +40,21 @@
   {{/link-to}}
 
 {{else}}
+
+  <div>
+    {{#if attack_damage}}
+      <p>
+        {{monster.title}} hits you for <span class="alert-danger">{{attack_damage}}</span> damage!
+      </p>
+    {{/if}}
+
+    {{#if player_damage}}
+      <p>
+        You did <span class="alert-danger">{{player_damage}}</span> damage!
+      </p>
+    {{/if}}
+  </div>
+
   <button type="button" class="btn btn-default" {{action "attack"}}>
     <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
     Attack
