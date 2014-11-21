@@ -4,6 +4,8 @@ export default DS.Model.extend({
   slots: DS.hasMany('slot', { async: true }),
   inventories: DS.hasMany('inventory', { async: true }),
 
+  dead: Ember.computed.lte('current_health', 0),
+
   title: DS.attr('string'),
   hunts: DS.attr('number'),
   rubies: DS.attr('number'),

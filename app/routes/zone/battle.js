@@ -8,6 +8,8 @@ export default Ember.Route.extend({
 
     if ( hunts === 0 ) return this.transitionTo('zones');
 
+    if ( player.get('dead') ) return this.transitionTo('zones');
+
     var newHuntsCount = hunts - 1;
     player.set('hunts', newHuntsCount);
     player.save();
