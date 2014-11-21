@@ -17,4 +17,6 @@ export default DS.Model.extend({
   status: DS.attr('string'),
   rubies: DS.attr('number'),
   exp: DS.attr('number'),
+  attack_damage: DS.attr('number'),
+  player_damage: DS.attr('number'),
 });
