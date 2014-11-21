@@ -5,6 +5,12 @@
     {{partial "application/sidebar"}}
 
     <section class="col-md-10">
+      <button {{action "heal"}} class="btn btn-primary">
+        Heal
+      </button>
+
+      <hr />
+
       {{outlet}}
     </section>
   </div>
