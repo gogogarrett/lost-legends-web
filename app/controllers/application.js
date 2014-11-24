@@ -2,11 +2,19 @@ import Ember from "ember";
 
 export default Ember.Controller.extend({
   levelProgress: function() {
-    return "width:" + this.get('session.player.level_progress') + "%";
+    if ( this.get('session.player.level_progress') <= 0 ) {
+      return "width: 0%";
+    } else {
+      return "width:" + this.get('session.player.level_progress') + "%";
+    }
   }.property('session.player.level_progress'),
 
   healthProgress: function() {
-    return "width:" + this.get('session.player.health_progress') + "%";
+    if ( this.get('session.player.health_progress') <= 0 ) {
+      return "width: 0%";
+    } else {
+      return "width:" + this.get('session.player.health_progress') + "%";
+    }
   }.property('session.player.health_progress'),
 
   isEditingPoints: function() {

@@ -5,6 +5,14 @@ export default DS.Model.extend({
   inventories: DS.hasMany('inventory', { async: true }),
 
   dead: Ember.computed.lte('current_health', 0),
+  // [g] should this be in the controller/component?
+  displayCurrentHealth: function() {
+    if ( this.get('current_health') <= 0 ) {
+      return 0;
+    } else {
+      return this.get('current_health');
+    }
+  }.property('current_health'),
 
   title: DS.attr('string'),
   hunts: DS.attr('number'),
